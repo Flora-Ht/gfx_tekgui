@@ -14,6 +14,7 @@
 char		**my_str_to_wordtab(char *str);
 char		*my_strcapitalize(char *str);
 char		*my_strcat(char *dest, char *src);
+char		*my_strnmcat(char *dest, char *src, int nb);
 char		*my_strcpy(char *dest, char *src);
 char		*my_strdup(const char *src);
 char		*my_strlowcase(char *str);

@@ -60,6 +60,11 @@ typedef struct		s_window
   char			*text;
 }			t_window;
 
+typedef struct		s_textbox
+{
+  char			*text;
+}			t_textbox;
+
 typedef struct		s_tekgui
 {
   t_widget		*first;
