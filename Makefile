@@ -10,12 +10,10 @@
 
 NAME		= tekgui
 
-LIB			= -L../ \
+LIB			= -L. \
 			  -Wl,--whole-archive \
 			  -ltekgui \
-			  -Wl,--no-whole-archive \
-			  -L../lib/ \
-			  -lmy
+			  -Wl,--no-whole-archive 
 LIB			+= -L/home/${USER}/.froot/lib/ \
 			   -L/usr/local/lib \
 			   -Llib/ \
@@ -33,33 +31,19 @@ SRC			= main.c
 
 OBJ			= $(SRC:.c=.o)
 
-all: libmy libtekgui $(NAME)
+all: $(NAME)
 	@echo "Done."
 
 $(NAME): $(OBJ)
 	@gcc $(CFLAGS) $(OBJ) $(LIB) -o $(NAME)
 
-libmy:
-	@echo "Compiling libmy.a ..."
-	@make --no-print-directory -C ../lib/my/
-	@echo -e "Done."
-
-libtekgui:
-	@echo "Compiling libtekgui.a ..."
-	@make --no-print-directory -C ../
-	@echo -e "Done.\nMaking executable ..."
-
 clean:
 	@echo "Cleaning .o-files ..."
 	@rm -f $(OBJ)
-	@make --no-print-directory -C ../lib/my/ clean
-	@make --no-print-directory -C ../ clean
 
 fclean: clean
 	@echo "Removing $(NAME) ..."
 	@rm -f $(NAME)
-	@make --no-print-directory -C ../lib/my/ fclean
-	@make --no-print-directory -C ../ fclean
 
 re: fclean all
 
@@ -67,4 +51,4 @@ re: fclean all
 	@echo "->" $<
 	@gcc -c $< -o $@ $(CFLAGS)
 
-.PHONY: all libmy libtekgui clean fclean re
+.PHONY: all libtekgui clean fclean re
