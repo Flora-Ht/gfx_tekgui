@@ -40,12 +40,10 @@ $(NAME): $(OBJ)
 clean:
 	@echo "Cleaning .o-files ..."
 	@rm -f $(OBJ)
-	@make --no-print-directory -C ../ clean
 
 fclean: clean
 	@echo "Removing $(NAME) ..."
 	@rm -f $(NAME)
-	@make --no-print-directory -C ../ fclean
 
 re: fclean all
 
