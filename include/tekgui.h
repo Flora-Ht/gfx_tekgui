@@ -28,6 +28,7 @@ typedef struct		s_widget
   int			height;
   int			child_nb;
   char			**child_name;
+  char			*bg_type;
   unsigned int		color;
   unsigned int		bg_color;
   t_bunny_pixelarray	*bg_img;
@@ -50,6 +51,7 @@ typedef struct		s_button
 typedef struct		s_checkbox
 {
   char			*label;
+  char			*action;
   int			checked;
   unsigned int		cross_color;
   unsigned int		frame_color;
@@ -58,6 +60,8 @@ typedef struct		s_checkbox
 typedef struct		s_window
 {
   char			*text;
+  int			pos_cross_x;
+  int			cross_size;
 }			t_window;
 
 typedef struct		s_textbox
@@ -67,10 +71,20 @@ typedef struct		s_textbox
 
 typedef struct		s_tekgui
 {
+  int			snow;
+  int			wind;
   t_widget		*first;
   t_widget		*widget;
+  t_widget		*focused;
   t_bunny_pixelarray	*font;
 }			t_tekgui;
+
+typedef struct		s_snow
+{
+  int			x;
+  float			y;
+  float			speed;
+}			t_snow;
 
 typedef struct		s_text
 {

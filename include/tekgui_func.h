@@ -20,6 +20,7 @@
 # include "tekgui.h"
 
 # define NB_TYPES 4
+# define SNOW_DENSITY 100
 
 /* FONCTIONS OBLIGATOIRES */
 t_tekgui		*tekgui_load(const char *file);
@@ -35,6 +36,10 @@ void			tekgui_main_loop(t_data *data);
 
 /* GET INFORMATION FROM INI */
 unsigned int		get_right_color(const char *str);
+
+/* ACTIONS */
+t_bunny_response	action_exit(t_tekgui *gui, t_widget *wid);
+t_bunny_response	action_stay(t_tekgui *gui, t_widget *wid);
 
 /* DISPLAY TEXT */
 unsigned int		get_color(t_bunny_pixelarray *pix, int x, int y);
@@ -64,6 +69,9 @@ void			draw_cross(t_bunny_pixelarray *pix,
 				   t_bunny_position *pos,
 				   t_bunny_position *size,
 				   unsigned int color);
+void			draw_snow(t_bunny_pixelarray *pix, t_tekgui *gui);
+void			draw_window_cross(t_bunny_pixelarray *pix,
+					  t_widget *wid, t_window *window);
 
 /* WIDGET */
 int			check_widget(t_widget *wid);
@@ -107,6 +115,7 @@ void			free_my_textbox(t_widget *wid);
 /* MISCELLANEOUS */
 int			my_strlen_to_char(char *str, char c);
 int			my_is_printable(char c);
+int			my_str_count_char(char *str, char c);
 
 /* EVENT */
 t_bunny_response	key_listener(t_bunny_event_state state,
